@@ -1,0 +1,191 @@
+.ceiling {
+    -ms-box-pack: justify;
+    -moz-box-pack: justify;
+    -webkit-box-pack: justify;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: justify;
+    height: 100%;
+    justify-content: space-between;
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+}
+
+.leftSpeaker {
+    background-image: url("../../imgs/leftSpeaker.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=5)";
+    height: 50px;
+    opacity: 0.05;
+    width: 50px;
+    z-index: 3;
+}
+
+.rightSpeaker {
+    background-image: url("../../imgs/rightSpeaker.png");
+    background-position: right top;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    border-radius: 50%;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=5)";
+    height: 50px;
+    opacity: 0.05;
+    width: 50px;
+    z-index: 3;
+}
+
+.lightsSwitch {
+    background-image: url("../../imgs/whitePullCord.png");
+    background-position: right top;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+    height: 300px;
+    opacity: 0.5;
+    position: absolute;
+    right: 10%;
+    top: -50px;
+    width: 15px;
+    z-index: 4;
+}
+
+.bulb-holder {
+    height: 70px;
+}
+
+.bulb {
+    background-repeat: no-repeat;
+    background-size: 50px 50px;
+    height: 50px;
+    width: 50px;
+    z-index: 3;
+}
+
+.yellowBulb {
+    background-image: url("../../imgs/bulb_yellow.png");
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=5)";
+    opacity: 0.05;
+}
+
+.redBulb {
+    background-image: url("../../imgs/bulb_red.png");
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=5)";
+    opacity: 0.05;
+}
+
+.blueBulb {
+    background-image: url("../../imgs/bulb_blue.png");
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=5)";
+    opacity: 0.05;
+}
+
+.greenBulb {
+    background-image: url("../../imgs/bulb_green.png");
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=5)";
+    opacity: 0.05;
+}
+
+.pinkBulb {
+    background-image: url("../../imgs/bulb_pink.png");
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=5)";
+    opacity: 0.05;
+}
+
+.orangeBulb {
+    background-image: url("../../imgs/bulb_orange.png");
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=5)";
+    opacity: 0.05;
+}
+
+.glowYellow {
+    -webkit-animation: glowYellow linear 1s infinite;
+    animation: glowYellow linear 1s infinite;
+}
+@-webkit-keyframes glowYellow {
+    50% {
+        background-image: url("../../imgs/bulb.png");
+    }
+}
+@keyframes glowYellow {
+    50% {
+        background-image: url("../../imgs/bulb.png");
+    }
+}
+
+.glowRed {
+    -webkit-animation: glowRed linear 1s infinite;
+    animation: glowRed linear 1s infinite;
+}
+@-webkit-keyframes glowRed {
+    50% {
+        background-image: url("../../imgs/bulb.png");
+    }
+}
+@keyframes glowRed {
+    50% {
+        background-image: url("../../imgs/bulb.png");
+    }
+}
+
+.glowBlue {
+    -webkit-animation: glowBlue linear 1s infinite;
+    animation: glowBlue linear 1s infinite;
+}
+@-webkit-keyframes glowBlue {
+    50% {
+        background-image: url("../../imgs/bulb.png");
+    }
+}
+@keyframes glowBlue {
+    50% {
+        background-image: url("../../imgs/bulb.png");
+    }
+}
+
+.glowGreen {
+    -webkit-animation: glowGreen linear 1s infinite;
+    animation: glowGreen linear 1s infinite;
+}
+@-webkit-keyframes glowGreen {
+    50% {
+        background-image: url("../../imgs/bulb.png");
+    }
+}
+@keyframes glowGreen {
+    50% {
+        background-image: url("../../imgs/bulb.png");
+    }
+}
+
+.glowPink {
+    -webkit-animation: glowPink linear 1s infinite;
+    animation: glowPink linear 1s infinite;
+}
+@-webkit-keyframes glowPink {
+    50% {
+        background-image: url("../../imgs/bulb.png");
+    }
+}
+@keyframes glowPink {
+    50% {
+        background-image: url("../../imgs/bulb.png");
+    }
+}
+
+.glowOrange {
+    -webkit-animation: glowOrange linear 1s infinite;
+    animation: glowOrange linear 1s infinite;
+}
+@-webkit-keyframes glowOrange {
+    50% {
+        background-image: url("../../imgs/bulb.png");
+    }
+}
+@keyframes glowOrange {
+    50% {
+        background-image: url("../../imgs/bulb.png");
+    }
+}

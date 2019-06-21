@@ -1,13 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title></title>
-    <link rel="stylesheet" href="public/stylesheets/main.css">
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8" />
+        <link
+            href="https://fonts.googleapis.com/css?family=Indie+Flower&amp;display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="public/stylesheets/main.css" />
+        <link rel="stylesheet" href="public/stylesheets/ceiling.css" />
+        <link rel="stylesheet" href="public/stylesheets/decorations.css" />
+        <link rel="stylesheet" href="public/stylesheets/background.css" />
+        <title>Birthday Greeting</title>
+    </head>
+    <body>
+        <div class="ceiling" id="ceiling">
+            <div class="leftSpeaker" id="leftSpeaker"></div>
+            <div class="bulb-holder">
+                <div class="bulb yellowBulb" id="yellowBulb"></div>
+            </div>
+            <div class="bulb-holder">
+                <div class="bulb redBulb" id="redBulb"></div>
+            </div>
+            <div class="bulb-holder">
+                <div class="bulb blueBulb" id="blueBulb"></div>
+            </div>
+            <div class="bulb-holder">
+                <div class="bulb greenBulb" id="greenBulb"></div>
+            </div>
 
-</body>
-<script type="text/javascript" src="public/javascripts/app.js"></script>
+            <div class="lightsSwitch clickMe" id="lightsSwitch"></div>
+
+            <div class="bulb-holder">
+                <div class="bulb pinkBulb" id="pinkBulb"></div>
+            </div>
+
+            <div class="bulb-holder">
+                <div class="bulb orangeBulb" id="orangeBulb"></div>
+            </div>
+
+            <div class="rightSpeaker" id="rightSpeaker"></div>
+        </div>
+
+        <div class="window" id="window">
+            <canvas id="starCanvas"></canvas>
+            <div class="landscape">
+                <div class="cityscape">
+                    <div class="building">
+                        <div class="windows"></div>
+                        <div class="radio"></div>
+                    </div>
+                    <div class="building">
+                        <div class="windows"></div>
+                        <div class="radio"></div>
+                    </div>
+                    <div class="building">
+                        <div class="windows"></div>
+                    </div>
+                    <div class="building">
+                        <div class="windows"></div>
+                    </div>
+                    <div class="building">
+                        <div class="windows"></div>
+                    </div>
+                    <div class="building">
+                        <div class="windows"></div>
+                    </div>
+                    <div class="building">
+                        <div class="windows"></div>
+                    </div>
+                    <div class="building">
+                        <div class="windows"></div>
+                    </div>
+                    <div class="building">
+                        <div class="windows"></div>
+                    </div>
+                    <div class="building">
+                        <div class="windows"></div>
+                    </div>
+                    <div class="building">
+                        <div class="windows"></div>
+                    </div>
+                    <div class="building">
+                        <div class="windows"></div>
+                    </div>
+                    <div class="building">
+                        <div class="windows"></div>
+                    </div>
+                    <div class="building">
+                        <div class="windows"></div>
+                    </div>
+                    <div class="building">
+                        <div class="windows"></div>
+                    </div>
+                    <div class="building">
+                        <div class="windows"></div>
+                    </div>
+                    <div class="building">
+                        <div class="windows"></div>
+                    </div>
+                    <div class="building">
+                        <div class="windows"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="decorations" id="decorations">
+            <div class="cakeAndTable" id="cakeAndTable">
+                <div class="cakeAndFlame">
+                    <div class="flameHolder" id="flame">
+                        <div class="flameGlow" id="flameGlow"></div>
+                        <div class="redFlame" id="redFlame"></div>
+                        <div class="blueFlame" id="blueFlame"></div>
+                        <div class="thread" id="thread"></div>
+                    </div>
+                    <div class="cake" id="cake"></div>
+                </div>
+                <div class="table" id="table"></div>
+            </div>
+            <div class="balloons" id="balloons">
+                <div class="balloon b1 bb1" id="b1">
+                    <h2 class="bText">H</h2>
+                </div>
+                <div class="balloon b2 bb2" id="b2">
+                    <h2 class="bText">A</h2>
+                </div>
+                <div class="balloon b3 bb3" id="b3">
+                    <h2 class="bText">P</h2>
+                </div>
+                <div class="balloon b4 bb4" id="b4">
+                    <h2 class="bText">P</h2>
+                </div>
+                <div class="balloon b5 bb5" id="b5">
+                    <h2 class="bText">Y</h2>
+                </div>
+                <div class="balloon b6 bb6" id="b6">
+                    <h2 class="bText">B</h2>
+                </div>
+                <div class="balloon b7 bb7" id="b7">
+                    <h2 class="bText">I</h2>
+                </div>
+                <div class="balloon b3 bb3" id="b8">
+                    <h2 class="bText">R</h2>
+                </div>
+                <div class="balloon b4 bb4" id="b9">
+                    <h2 class="bText">T</h2>
+                </div>
+                <div class="balloon b1 bb1" id="b10">
+                    <h2 class="bText">H</h2>
+                </div>
+                <div class="balloon b5 bb5" id="b11">
+                    <h2 class="bText">D</h2>
+                </div>
+                <div class="balloon b2 bb2" id="b12">
+                    <h2 class="bText">A</h2>
+                </div>
+                <div class="balloon b7 bb7" id="b13">
+                    <h2 class="bText">Y</h2>
+                </div>
+                <div class="balloon b6 bb6" id="b14">
+                    <h2 class="bText">!</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="floor" id="floor"></div>
+
+        <img
+            src="imgs/Balloon-Border.png"
+            class="balloonBorder"
+            id="balloonBorder"
+            alt=""
+        />
+
+        <audio class="song" id="song">
+            Your browser does not support audio.
+        </audio>
+
+        <div class="wishMessage" id="wishMessage">
+            <p class="wishText" id="wt1">METEOR SHOWERS!</p>
+            <p class="wishText" id="wt2">Quick make a wish!</p>
+            <p class="wishText" id="wt3">Then blow out the candle.</p>
+        </div>
+
+        <div class="message" id="message">
+            <p class="text" id="t0">Birthday Message for you</p>
+            <p class="text" id="t1">eius voluptas explicabo</p>
+            <p class="text" id="t2">debitis atque.</p>
+            <p class="text" id="t3"><strong>HAPPY BIRTHDAY!</strong></p>
+        </div>
+        <script
+            type="text/javascript"
+            src="public/javascripts/stars.js"
+        ></script>
+        <script
+            type="text/javascript"
+            src="public/javascripts/main.js"
+        ></script>
+    </body>
 </html>
-
