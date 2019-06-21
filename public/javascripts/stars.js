@@ -2,15 +2,18 @@ const background = document.getElementById("starCanvas");
 const bgCtx = background.getContext("2d");
 const getScreenHeight = window.innerHeight;
 const getScreenWidth = window.innerWidth;
-let theEnd = false;
-let age = 31; // total number of shooting stars per cycle
+const age = 31; // total number of shooting stars per cycle
+const cycles = 3;
 let shootingCycles = 0;
-let cycles = 3;
+let theEnd = false;
 
 background.width = getScreenWidth;
 background.height = getScreenHeight;
 
-// stars
+/**
+ * Stars class
+ * @param {object} options object of x and y coordinates
+ */
 function Star(options) {
     this.minSize = Math.random() * 0.1;
     this.maxSize = Math.random() * 3;
@@ -41,15 +44,15 @@ Star.prototype.update = function() {
 };
 
 Star.prototype.glow = function() {
-    var size = Math.random() * 6;
+    const size = Math.random() * 6;
     this.size =
-        size >= this.maxSize
-            ? this.maxSize / 2
-            : size <= this.minSize
-            ? this.minSize
-            : size;
+        size >= this.maxSize ? this.maxSize / 2
+            : size <= this.minSize ? this.minSize : size;
 };
 
+/**
+ * Shooting star class
+ */
 function ShootingStar() {
     this.reset();
 }
@@ -89,17 +92,17 @@ ShootingStar.prototype.update = function() {
     }
 };
 
-let entities = [];
-let starArray = [];
+const entities = [];
+const starArray = [];
 // Add total number of stars
 for (let i = 0; i < getScreenHeight; i++) {
-    let randX = Math.random();
-    let randY = Math.random();
+    const randX = Math.random();
+    const randY = Math.random();
     starArray.push(
-        new Star({
-            x: randX * getScreenWidth,
-            y: randY * getScreenHeight
-        })
+            new Star({
+                x: randX * getScreenWidth,
+                y: randY * getScreenHeight,
+            })
     );
 }
 
@@ -108,7 +111,9 @@ for (let i = 0; i < age; i++) {
     entities.push(new ShootingStar());
 }
 
-//animate background
+/**
+ * Activate animation of stars blinking
+ */
 function animate() {
     if (!theEnd) {
         // color rectangle background
@@ -121,7 +126,7 @@ function animate() {
         bgCtx.strokeStyle = "#ffffff";
 
         // get total num of stars
-        var starLen = starArray.length;
+        let starLen = starArray.length;
         // update all stars position
         while (starLen--) {
             starArray[starLen].update();
@@ -131,9 +136,12 @@ function animate() {
     }
 }
 
+/**
+ * Activate animation of shooting stars
+ */
 function animateShootingStars() {
     if (!theEnd) {
-        var entLen = entities.length;
+        let entLen = entities.length;
         while (entLen--) {
             entities[entLen].update();
         }

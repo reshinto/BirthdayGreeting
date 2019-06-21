@@ -31,7 +31,6 @@ const b11 = document.getElementById("b11");
 const b12 = document.getElementById("b12");
 const b13 = document.getElementById("b13");
 const b14 = document.getElementById("b14");
-// const song = document.getElementById("song");
 const windowDiv = document.getElementById("window");
 const wishMsgParent = document.getElementById("wishMessage");
 const msgParent = document.getElementById("message");
@@ -51,8 +50,8 @@ let isLightsClicked = false;
 let isDown = false;
 let hasMove = false;
 let Y = 0;
-let mouseUp = false;
-let mouseLeave = false;
+const mouseUp = false;
+const mouseLeave = false;
 
 // Event Listeners
 // Turn On lights event
@@ -67,47 +66,31 @@ lightsButton.addEventListener("click", function() {
     // }
 });
 
-lightsButton.addEventListener(
-    "mousedown",
-    function() {
-        isDown = true;
-    },
-    true
-);
+lightsButton.addEventListener("mousedown", function() {
+    isDown = true;
+}, true);
 
-lightsButton.addEventListener(
-    "mousemove",
-    function(e) {
-        e.preventDefault();
-        isLightsClicked = true;
-        let rect = lightsButton.getBoundingClientRect();
-        let movement = event.movementY;
-        if (rect.top < 0 && isDown) {
-            hasMove = true;
-            if (movement >= Y && movement <= 50) {
-                Y = movement;
-            }
-            lightsButton.style.top = rect.y + Y + "px";
+lightsButton.addEventListener("mousemove", function(e) {
+    e.preventDefault();
+    isLightsClicked = true;
+    const rect = lightsButton.getBoundingClientRect();
+    const movement = event.movementY;
+    if (rect.top < 0 && isDown) {
+        hasMove = true;
+        if (movement >= Y && movement <= 50) {
+            Y = movement;
         }
-    },
-    true
-);
+        lightsButton.style.top = rect.y + Y + "px";
+    }
+}, true);
 
-lightsButton.addEventListener(
-    "mouseup",
-    function() {
-        resetPosition(mouseUp);
-    },
-    true
-);
+lightsButton.addEventListener("mouseup", function() {
+    resetPosition(mouseUp);
+}, true);
 
-lightsButton.addEventListener(
-    "mouseleave",
-    function() {
-        resetPosition(mouseLeave);
-    },
-    true
-);
+lightsButton.addEventListener("mouseleave", function() {
+    resetPosition(mouseLeave);
+}, true);
 
 // Turn On music event
 
@@ -160,6 +143,7 @@ for (let i = 1; i <= 14; i++) {
 
 flameButton.addEventListener("click", function() {
     if (okToClick && isBalloonClicked && !isFlameClicked) {
+        isFlameClicked = true;
         flameButton.classList.remove("clickMe");
         fadeOut(flameButton, 10);
 
@@ -173,6 +157,10 @@ flameButton.addEventListener("click", function() {
 // Required functions
 // Turn On lights event functions
 
+/**
+ * Turn on lights and reset all events
+ * @param {bool} mouseEvent a mouse event with bool value
+ */
 function resetPosition(mouseEvent) {
     mouseEvent = true;
     if (hasMove && mouseEvent) {
@@ -187,6 +175,9 @@ function resetPosition(mouseEvent) {
     }
 }
 
+/**
+ * Turn on all lights
+ */
 function turnOnLights() {
     lightsFadeIn(bulb1);
     lightsFadeIn(bulb2);
@@ -202,9 +193,14 @@ function turnOnLights() {
     lightsFadeIn(floor);
 }
 
+/**
+ * Fade out animation
+ * @param {element_ID} element ID of html element
+ * @param {number} speed animation speed
+ */
 function fadeOut(element, speed) {
-    var opacity = 1;
-    var timer = setInterval(function() {
+    let opacity = 1;
+    const timer = setInterval(function() {
         if (opacity <= 0.1) {
             clearInterval(timer);
             element.style.display = "none";
@@ -215,11 +211,17 @@ function fadeOut(element, speed) {
     }, speed);
 }
 
+/**
+ * Fade in animation
+ * @param {element_ID} element ID of html element
+ * @param {number} speed animation speed
+ * @param {value} displayType set css display value
+ */
 function fadeIn(element, speed, displayType) {
     element.style.opacity = 0;
-    var opacity = 0.1;
+    let opacity = 0.1;
     element.style.display = displayType;
-    var timer = setInterval(function() {
+    const timer = setInterval(function() {
         if (opacity >= 1) {
             clearInterval(timer);
         }
@@ -229,11 +231,15 @@ function fadeIn(element, speed, displayType) {
     }, speed);
 }
 
+/**
+ * Turn on lights animation
+ * @param {element_ID} element ID of html element
+ */
 function lightsFadeIn(element) {
-    var opacity = parseFloat(
-        window.getComputedStyle(element).getPropertyValue("opacity")
+    let opacity = parseFloat(
+            window.getComputedStyle(element).getPropertyValue("opacity")
     );
-    var timer = setInterval(function() {
+    const timer = setInterval(function() {
         if (
             (element === balloonsButton && opacity >= 0.95) ||
             (element === table && opacity >= 0.8)
@@ -249,13 +255,17 @@ function lightsFadeIn(element) {
     }, 10);
 }
 
-// Decoration event function
+// Decoration event functions
 
+/**
+ * Turn off lights animation
+ * @param {element_ID} element ID of html element
+ */
 function lightsFadeOut(element) {
-    var opacity = parseFloat(
-        window.getComputedStyle(element).getPropertyValue("opacity")
+    let opacity = parseFloat(
+            window.getComputedStyle(element).getPropertyValue("opacity")
     );
-    var timer = setInterval(function() {
+    const timer = setInterval(function() {
         if (theEnd && opacity <= 0) {
             clearInterval(timer);
         }
@@ -268,6 +278,9 @@ function lightsFadeOut(element) {
     }, 10);
 }
 
+/**
+ * Turn off all lights
+ */
 function turnOffLights() {
     lightsFadeOut(bulb1);
     lightsFadeOut(bulb2);
@@ -285,22 +298,27 @@ function turnOffLights() {
     lightsFadeOut(floor);
 }
 
+/**
+ * Let balloon border loose
+ */
 function flyAndDisappear() {
     let pos = balloonBorder.getBoundingClientRect().top;
-    let timer = setInterval(frame, 5);
-    function frame() {
+    const timer = setInterval(function() {
         if (pos === -10) {
             clearInterval(timer);
         } else {
             pos--;
             balloonBorder.style.top = pos + "px";
         }
-    }
+    }, 5);
 }
 
+/**
+ * Move table, cake, and flame to the center of screen
+ */
 function moveDecorations() {
     let left = Math.floor(decorations.getBoundingClientRect().left);
-    let timer = setInterval(function() {
+    const timer = setInterval(function() {
         left += 2;
         if (getCenterPos(decorations) >= screenWidthCenterPos) {
             clearInterval(timer);
@@ -317,9 +335,12 @@ function moveDecorations() {
     }, 5);
 }
 
+/**
+ * Move all balloons to the right end of screen
+ */
 function moveBalloons() {
     let left = Math.floor(b14.getBoundingClientRect().left);
-    let timer = setInterval(function() {
+    const timer = setInterval(function() {
         left += 3;
         if (b14.getBoundingClientRect().right < getScreenWidth) {
             for (let i = 1; i <= 14; i++) {
@@ -332,6 +353,9 @@ function moveBalloons() {
     }, 5);
 }
 
+/**
+ * Release all balloons when it hits the right end of screen
+ */
 function releaseBalloons() {
     removeClass();
     releaseBalloon(b1, 16, 0);
@@ -351,6 +375,9 @@ function releaseBalloons() {
     addClass();
 }
 
+/**
+ * Remove margin spacing of all balloons
+ */
 function removeClass() {
     b1.classList.remove("b1");
     b2.classList.remove("b2");
@@ -368,6 +395,9 @@ function removeClass() {
     b14.classList.remove("b6");
 }
 
+/**
+ * Add balloon animations for all balloons
+ */
 function addClass() {
     b1.classList.add("balloons-rotate-behaviour-two");
     b2.classList.add("balloons-rotate-behaviour-one");
@@ -385,13 +415,18 @@ function addClass() {
     b14.classList.add("balloons-rotate-behaviour-one");
 }
 
+/**
+ * release a balloon when it hits the right end of the screen
+ * @param {element_ID} balloonId ID of balloon element
+ * @param {percentage} centerP position of balloon to stop horizontally
+ * @param {percentage} topP position of balloon to stop vertically
+ */
 function releaseBalloon(balloonId, centerP, topP) {
-    let setTopPos = setPos(getScreenHeight, topP);
-    let setCenterPos = setPos(getScreenWidth, centerP);
+    const setTopPos = setPos(getScreenHeight, topP);
+    const setCenterPos = setPos(getScreenWidth, centerP);
     let curLeftPos = Math.floor(balloonId.getBoundingClientRect().left);
     let curTopPos = Math.floor(balloonId.getBoundingClientRect().top);
-    let timer = setInterval(frame, 5);
-    function frame() {
+    const timer = setInterval(function() {
         if (balloonId.getBoundingClientRect().top > setTopPos) {
             curTopPos -= 1;
             balloonId.style.top = curTopPos + "px";
@@ -407,21 +442,35 @@ function releaseBalloon(balloonId, centerP, topP) {
                 clearInterval(timer);
             }
         }
-    }
+    }, 5);
 }
 
+/**
+ * Get actual position from screen
+ * @param {number} screenDimension width or height of screen
+ * @param {percentage} posPercentage desired stopping position
+ * @return {number} the actual position to stop animation
+ */
 function setPos(screenDimension, posPercentage) {
     return Math.floor((screenDimension / 100) * posPercentage);
 }
 
+/**
+ * Get the center position of the element
+ * @param {element_ID} balloonId ID of balloon element
+ * @return {number} the center position of the element
+ */
 function getCenterPos(balloonId) {
-    let left = balloonId.getBoundingClientRect().left;
-    let right = balloonId.getBoundingClientRect().right;
+    const left = balloonId.getBoundingClientRect().left;
+    const right = balloonId.getBoundingClientRect().right;
     return Math.floor((right - left) / 2 + left);
 }
 
 // Display Message event functions
 
+/**
+ * Start to activate the ending animation
+ */
 function startEnd() {
     setTimeout(function() {
         theEnd = true;
@@ -432,6 +481,13 @@ function startEnd() {
     }, 3000);
 }
 
+/**
+ * Play text animation
+ * @param {number} maxCount total number of text elements
+ * @param {string} elementPrefix ID of text element excluding the numbers
+ * @param {number} count the number of times the text has been looped
+ * @param {number} preCount the previous count number
+ */
 function textLoop(maxCount, elementPrefix, count = 0, preCount = 0) {
     if (count === 0) {
         fadeIn(document.getElementById(`${elementPrefix}0`), 10, "block");
@@ -444,8 +500,9 @@ function textLoop(maxCount, elementPrefix, count = 0, preCount = 0) {
         }, 5000);
     }
     setTimeout(function() {
+        let text;
         if (preCount !== count) {
-            var text = document.getElementById(`${elementPrefix}${preCount}`);
+            text = document.getElementById(`${elementPrefix}${preCount}`);
             fadeOut(text, 50);
             preCount++;
             return textLoop(maxCount, elementPrefix, count, preCount);
