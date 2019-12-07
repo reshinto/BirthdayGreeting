@@ -1,1 +1,1 @@
-![Happy Birthday](./imgs/happyBirthday.png)
+![Happy Birthday](./imgs/bDayGreeting.gif)
